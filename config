@@ -58,7 +58,7 @@ output 'BOE 0x0BC9 Unknown' resolution 2560x1600@165Hz
 
  exec swayidle -w \
           before-sleep 'swaylock -f -c 000000' \
-	  idlehint 0
+	  idlehint 1
 
 ### Input configuration
 #
