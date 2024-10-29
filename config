@@ -21,8 +21,7 @@ exec albert
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-# set $menu  albert show | xargs swaymsg exec --
-set $menu albert show
+set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 # Start your launcher
 bindsym $mod+d exec $menu
@@ -241,7 +240,8 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command i3status -c ~/.config/sway/i3config
 
     colors {
         statusline #ffffff
