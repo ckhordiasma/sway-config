@@ -37,10 +37,26 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output * scale 1.5
 output * adaptive_sync off
-output 'BOE 0x0BC9 Unknown' resolution 2560x1600@165Hz 
 
+# Framework Monitor
+output 'BOE 0x0BC9 Unknown' \
+	resolution 2560x1600@165Hz scale 1.5 pos 0 0
+
+# widescreen - upper lefthand corner of FW monitor
+output 'Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown' \
+	resolution 3440x1440@59.999Hz scale 1.5 \
+	pos -2293 -900
+
+# lower left monitor
+output 'Dell Inc. DELL P2419H 30NGR63' \
+	resolution 1920x1080@60Hz scale 1 \
+	pos -4213 -270 
+
+# upper left monitor
+output 'Hewlett Packard HP V241 3CQ41708N3' \
+	resolution 1920x1080@60Hz scale 1 \
+	pos -4213 -1350
 
 
 ### Idle configuration
