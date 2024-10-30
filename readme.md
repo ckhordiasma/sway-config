@@ -42,4 +42,14 @@ had to pacman install swayidle in order to get it to work with the default confi
 
 added a bunch of hotkeys for those. a lot of them still arent working, like brightness 
 
+## Switching audio
 
+Had to do a few things to get audio working in my setup
+
+- install pipewire-pulse. had to uninstall pulseaudio-bluetooth before being able to install
+- disable and stop pulseaudio/pulseaudio.socket services
+- enable and start pipewire and pipewire-pulse
+- view audio outputs ("sinks") with `pactl list short sinks`
+- set desired sink with `pactl set-default-sink NN` where NN is the ID of the sink
+
+I tried to get things working with just pulseaudio, but was finding that it was not outputting correctly out to my HDMI audio output. that is why I switched to pipewire
