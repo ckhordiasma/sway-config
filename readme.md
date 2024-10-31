@@ -53,3 +53,32 @@ Had to do a few things to get audio working in my setup
 - set desired sink with `pactl set-default-sink NN` where NN is the ID of the sink
 
 I tried to get things working with just pulseaudio, but was finding that it was not outputting correctly out to my HDMI audio output. that is why I switched to pipewire
+
+
+## bluetooth headset audio
+
+to get bluetooth working, had to do the following
+
+- make sure that bluetooth wasn't on with `rfkill unblock bluetooth`
+- run the following commands in bluetoothctl:
+
+```
+bluetoothctl
+# start pairing mode on your other bluetooth device
+scan on
+# find your device MAC address (colons) from the output
+scan off 
+# to stop output spam
+trust MAC
+# above is needed if no PIN used
+pair MAC
+connect MAC
+```
+
+later on, you can run the following to do the same without dropping into the bluetoothctl shell
+
+```
+bluetoothctl -- connect D8:E2:DF:F7:DB:CF
+```
+
+

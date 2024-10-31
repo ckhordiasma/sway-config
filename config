@@ -22,7 +22,6 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
-
 # Start your launcher
 bindsym $mod+d exec $menu
 
@@ -72,9 +71,12 @@ output 'Hewlett Packard HP V241 3CQ41708N3' \
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
- exec swayidle -w \
-          before-sleep 'swaylock -f -c 000000' \
-	  idlehint 1
+# swaylock settings managed separately
+exec swayidle -w \
+          timeout 300 'swaylock -f --config ~/.config/sway/swaylock-config' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f --config ~/.config/sway/swaylock-config' \
+	  idlehint 900
 
 ### Input configuration
 #
@@ -103,6 +105,8 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
 
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
+
+input type:keyboard xkb_numlock enabled
 ### Key bindings
 #
 # Basics:
@@ -251,6 +255,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Search exec bemenu-run
 
+bindsym $mod+Shift+o exec ~/.config/sway/audio_toggle.sh
+
 #
 # Status Bar:
 #
@@ -267,7 +273,10 @@ bar {
         statusline #ffffff
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
+	# focused_workspace #4c7899 #5599FF #000000
+	focused_background #665555
     }
 }
+
 
 include /etc/sway/config.d/*
