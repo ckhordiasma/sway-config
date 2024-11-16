@@ -54,6 +54,24 @@ Had to do a few things to get audio working in my setup
 
 I tried to get things working with just pulseaudio, but was finding that it was not outputting correctly out to my HDMI audio output. that is why I switched to pipewire
 
+## HDMI audio stopped working
+
+I have my laptop attached to a dock, and use one of the HDMI outputs to go to my desk audio system. It stopped working one day, and I had to troubleshoot. 
+
+`pactl list cards` or `pactl list short cards` showed me the "card" that the dock appears as. The card has several "profiles" which correspond to the output of each of the display outputs. I don't use the displayport 1 or 2 audios, and use HDMI (third output) instead. I had to run the following command to set the right profile:
+
+```
+pactl set-card-profile 47 output:hdmi-surround-extra2
+```
+
+I could find the correct card number and profile name via the `pactl list cards` command. the card name was `alsa_card.pci-0000_c1_00.1`
+
+so I think this could also work
+
+```
+pactl set-card-profile alsa_card.pci-0000_c1_00.1 output:hdmi-surround-extra2 
+```
+
 
 ## bluetooth headset audio
 
