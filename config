@@ -1,4 +1,3 @@
-
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -28,7 +27,7 @@ bindsym $mod+d exec $menu
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/chkodama/Pictures/glass-pyramids.jpeg fill 
 #
 # Example configuration:
 #
@@ -36,10 +35,20 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+set $framework_monitor 'BOE 0x0BC9 Unknown'
+
+workspace 1 output $framework_monitor
+workspace 2 output 'Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown'
+workspace 3 output 'Dell Inc. DELL P2419H 30NGR63'
+workspace 4 output 'Hewlett Packard HP V241 3CQ41708N3'
+
 output * adaptive_sync off
 
+bindswitch lid:on output $framework_monitor enable
+bindswitch lid:off output $framework_monitor enable
+
 # Framework Monitor
-output 'BOE 0x0BC9 Unknown' \
+output $framework_monitor \
 	resolution 2560x1600@165Hz scale 1.5 pos 0 0
 
 # widescreen - upper lefthand corner of FW monitor
@@ -75,8 +84,9 @@ output 'Hewlett Packard HP V241 3CQ41708N3' \
 exec swayidle -w \
           timeout 300 'swaylock -f --config ~/.config/sway/swaylock-config' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+	  timeout 900 'systemctl suspend-then-hibernate' \
+	  idlehint 1500 \
           before-sleep 'swaylock -f --config ~/.config/sway/swaylock-config' \
-	  idlehint 900
 
 ### Input configuration
 #
@@ -102,6 +112,10 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
   pointer_accel 0.1
   tap_button_map lrm
   }
+
+input "1121:20160:DELL_Alienware_610M" {
+  pointer_accel -.75
+}
 
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -274,9 +288,22 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
 	# focused_workspace #4c7899 #5599FF #000000
-	focused_background #665555
+	# focused_background #665555
+	focused_background #000000
     }
 }
 
+
+# make firefox birtwarden floating
+for_window [app_id="^firefox$" title="Extension:.*Bitwarden"] {
+	exec "swaymsg floating enable; swaymsg floating disable; swaymsg floating enable"
+	sticky enable
+	}
+
+for_window [app_id="^firefox$" title="Sign [Ii]n.*Google Accounts"] {
+	exec "swaymsg floating enable; swaymsg floating disable; swaymsg floating enable"
+	floating enable
+	sticky enable
+}
 
 include /etc/sway/config.d/*
