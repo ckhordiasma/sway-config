@@ -11,9 +11,10 @@ general {
         interval = 5
 }
 
-order += "ipv6"
+# order += "ipv6"
 order += "wireless _first_"
 order += "ethernet tailscale0"
+order += 'ethernet tun0'
 order += "battery all"
 # order += "disk /"
 order += "load"
@@ -28,7 +29,7 @@ format_down = ""
 }
 
 wireless _first_ {
-        format_up = "wifi:%quality %essid %ip"
+        format_up = "wifi:%quality %essid %ip (%bitrate)"
         # format_down = "W: down"
 	format_down = ""
 }
@@ -37,6 +38,12 @@ ethernet tailscale0 {
         format_up = "knet: %ip (%speed)"
 	color_good = "#888888"
         format_down = "knet: down"
+}
+
+ethernet tun0 {
+        format_up = "rh: %ip (%speed)"
+	color_good = "#888888"
+        format_down = ""
 }
 
 battery all {
