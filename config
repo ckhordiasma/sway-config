@@ -23,6 +23,10 @@ set $term alacritty
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 # Start your launcher
 bindsym $mod+d exec $menu
+bindsym $mod+Shift+Return exec firefox
+
+exec /usr/lib/xdg-desktop-portal
+exec /lib/xdg-desktop-portal-wlr -r -c ~/.config/sway/xdpw-config
 
 ### Output configuration
 #
@@ -44,8 +48,10 @@ workspace 4 output 'Hewlett Packard HP V241 3CQ41708N3'
 
 output * adaptive_sync off
 
-bindswitch lid:on output $framework_monitor enable
+bindswitch lid:on output $framework_monitor disable
 bindswitch lid:off output $framework_monitor enable
+
+# output $framework_monitor enable
 
 # Framework Monitor
 output $framework_monitor \
@@ -58,8 +64,10 @@ output 'Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown' \
 
 # lower left monitor
 output 'Dell Inc. DELL P2419H 30NGR63' \
-	resolution 1920x1080@60Hz scale 1 \
-	pos -4213 -270 
+	resolution --custom 1920x1080@59.999Hz scale 1 \
+	pos -4213 -270 \
+	
+
 
 # upper left monitor
 output 'Hewlett Packard HP V241 3CQ41708N3' \
