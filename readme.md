@@ -99,4 +99,24 @@ later on, you can run the following to do the same without dropping into the blu
 bluetoothctl -- connect D8:E2:DF:F7:DB:CF
 ```
 
+## screen recording
+
+i had to install slurp and xdg-desktop-portal-wlr 
+
+then, add 
+
+```
+exec /usr/lib/xdg-desktop-portal
+exec /lib/xdg-desktop-portal-wlr -r -c ~/.config/sway/xdpw-config
+```
+
+note the file xdpw-config, which i added to my sway config repo.
+
+to my swayconfig. also added
+
+```
+    export XDG_CURRENT_DESKTOP=sway
+```
+
+above `exec sway` to my ~/.profile .
 
