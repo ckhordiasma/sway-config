@@ -27,11 +27,11 @@ bindsym $mod+Shift+Return exec firefox
 
 exec /usr/lib/xdg-desktop-portal
 exec /lib/xdg-desktop-portal-wlr -r -c ~/.config/sway/xdpw-config
-
+exec bash ~/.config/sway/sway-subscribe.sh
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/chkodama/Pictures/glass-pyramids.jpeg fill 
+output * bg /home/chkodama/media/glass-pyramids.jpeg fill 
 #
 # Example configuration:
 #
@@ -48,10 +48,10 @@ workspace 4 output 'Hewlett Packard HP V241 3CQ41708N3'
 
 output * adaptive_sync off
 
-bindswitch lid:on output $framework_monitor disable
-bindswitch lid:off output $framework_monitor enable
+bindswitch --reload --locked lid:on output $framework_monitor disable
+bindswitch --reload --locked lid:off output $framework_monitor enable
 
-# output $framework_monitor enable
+bindsym --locked $mod+Shift+M output $framework_monitor toggle
 
 # Framework Monitor
 output $framework_monitor \
@@ -119,10 +119,13 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
   accel_profile adaptive
   pointer_accel 0.1
   tap_button_map lrm
+  drag enabled
+  scroll_method two_finger
   }
 
 input "1121:20160:DELL_Alienware_610M" {
-  pointer_accel -.75
+  pointer_accel -.8
+  accel_profile adaptive
 }
 
 bindgesture swipe:right workspace prev
@@ -302,16 +305,39 @@ bar {
 }
 
 
-# make firefox birtwarden floating
+# make firefox bitwarden floating
 for_window [app_id="^firefox$" title="Extension:.*Bitwarden"] {
 	exec "swaymsg floating enable; swaymsg floating disable; swaymsg floating enable"
 	sticky enable
 	}
 
-for_window [app_id="^firefox$" title="Sign [Ii]n.*Google Accounts"] {
-	exec "swaymsg floating enable; swaymsg floating disable; swaymsg floating enable"
-	floating enable
-	sticky enable
+# for_window [class="^steam_app_.*$" workspace=__focused__] { }
+
+mode Mouse {
+    bindsym a mode default, exec 'wl-kbptr-sway-active-win -c ~/.config/sway/wl-kbptr.conf; swaymsg mode Mouse'
+    bindsym Shift+a mode default, exec 'wl-kbptr -c ~/.config/sway/wl-kbptr.conf; swaymsg mode Mouse'
+
+    # Mouse move
+    bindsym h seat seat0 cursor move -15 0
+    bindsym j seat seat0 cursor move 0 15
+    bindsym k seat seat0 cursor move 0 -15
+    bindsym l seat seat0 cursor move 15 0
+
+    # Left button
+    bindsym s seat seat0 cursor press button1
+    bindsym --release s seat seat0 cursor release button1
+
+    # Middle button
+    bindsym d seat seat0 cursor press button2
+    bindsym --release d seat seat0 cursor release button2
+
+    # Right button
+    bindsym f seat seat0 cursor press button3
+    bindsym --release f seat seat0 cursor release button3
+
+    bindsym Escape mode default
 }
+
+bindsym $mod+g mode Mouse
 
 include /etc/sway/config.d/*
