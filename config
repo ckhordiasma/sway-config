@@ -25,6 +25,9 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+Return exec firefox
 
+bindsym $mod+tab workspace back_and_forth
+# bindsym $mod+tab workspace next
+
 exec /usr/lib/xdg-desktop-portal
 exec /lib/xdg-desktop-portal-wlr -r -c ~/.config/sway/xdpw-config
 exec bash ~/.config/sway/sway-subscribe.sh
@@ -243,6 +246,11 @@ input type:keyboard xkb_numlock enabled
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+
+# Grim screenshots
+
+bindsym $mod+Shift+s exec XDG_SCREENSHOTS_DIR=$HOME/screenshots /usr/share/sway-contrib/grimshot savecopy area
 #
 # Resizing containers:
 #
@@ -297,7 +305,7 @@ bar {
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        # inactive_workspace #32323200 #32323200 #5c5c5c
 	# focused_workspace #4c7899 #5599FF #000000
 	# focused_background #665555
 	focused_background #000000
@@ -306,10 +314,10 @@ bar {
 
 
 # make firefox bitwarden floating
-for_window [app_id="^firefox$" title="Extension:.*Bitwarden"] {
-	exec "swaymsg floating enable; swaymsg floating disable; swaymsg floating enable"
-	sticky enable
-	}
+#for_window [app_id="^firefox$" title="Extension:.*Bitwarden"] {
+	#exec "swaymsg floating enable; swaymsg floating disable; swaymsg floating enable"
+	#sticky enable
+	#}
 
 # for_window [class="^steam_app_.*$" workspace=__focused__] { }
 
