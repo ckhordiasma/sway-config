@@ -1,26 +1,37 @@
 indicator-caps-lock
-
-# color of screen
-color=111111
-
-
-indicator-radius=100
-indicator-thickness=25
-
-# colors of inner circle
-	inside-color=111111
-	inside-clear-color=555555
-	inside-caps-lock-color=FF1111
-	# color when verifying
-	inside-ver-color=5555FF
-  # color when wrong
-	inside-wrong-color=FF0000
-
-# colors of wedges on circle when inputting text
-	key-hl-color=666666
-	# deleting text
-	bs-hl-color=FF0000
-caps-lock-bs-hl-color=FF4499
-caps-lock-key-hl-color=44FF44
-
 indicator-idle-visible
+show-failed-attempts
+daemonize
+
+indicator-radius=75
+indicator-thickness=10
+font=monospace
+color=111111
+key-hl-color=319c28
+bs-hl-color=cf3b1f
+caps-lock-key-hl-color=319c28
+caps-lock-bs-hl-color=cf3b1f
+inside-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+layout-bg-color=00000000
+layout-border-color=00000000
+layout-text-color=cdd6f4
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+ring-color=536afc
+ring-clear-color=f7efed
+ring-caps-lock-color=fab387
+ring-ver-color=1733bf
+ring-wrong-color=eba0ac
+separator-color=00000000
+text-color=cdd6f4
+text-clear-color=f7efed
+text-caps-lock-color=fab387
+text-ver-color=1733bf
+text-wrong-color=eba0ac
