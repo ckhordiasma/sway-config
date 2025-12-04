@@ -28,8 +28,19 @@ bindsym $mod+Shift+Return exec firefox
 bindsym $mod+tab workspace back_and_forth
 # bindsym $mod+tab workspace next
 
+# set color profile
+exec dispwin /usr/share/color/icc/colord/NE160QDM-NZ6.icm
+
+exec swaync -c ~/.config/sway/swaync-config.json
+
+# for file choosers, screenshots, etc
 exec /usr/lib/xdg-desktop-portal
+# specifically for screenshots and screen recording
 exec /lib/xdg-desktop-portal-wlr -r -c ~/.config/sway/xdpw-config
+
+# for priv escalation prompt
+exec /usr/lib/polkit-kde-authentication-agent-1
+
 exec bash ~/.config/sway/sway-subscribe.sh
 ### Output configuration
 #
@@ -99,6 +110,10 @@ exec swayidle -w \
 	  idlehint 1500 \
           before-sleep 'swaylock -f --config ~/.config/sway/swaylock-config' \
 
+
+# this conflicts with other stuff
+# bindsym $mod+L 'swaylock -f --config ~/.config/sway/swaylock-config'
+
 ### Input configuration
 #
 # Example configuration:
@@ -124,6 +139,7 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
   tap_button_map lrm
   drag enabled
   scroll_method two_finger
+  scroll_factor 0.2
   }
 
 input "1121:20160:DELL_Alienware_610M" {
@@ -250,7 +266,7 @@ input type:keyboard xkb_numlock enabled
 
 # Grim screenshots
 
-bindsym $mod+Shift+s exec XDG_SCREENSHOTS_DIR=$HOME/screenshots /usr/share/sway-contrib/grimshot savecopy area
+bindsym $mod+Shift+s exec XDG_SCREENSHOTS_DIR=$HOME/screenshots grimshot savecopy area
 #
 # Resizing containers:
 #
@@ -281,8 +297,8 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
