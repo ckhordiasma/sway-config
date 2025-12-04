@@ -1,5 +1,26 @@
-show-failed-attempts
-indicator-idle-visible
-daemonize
-color=000000
+indicator-caps-lock
 
+# color of screen
+color=111111
+
+
+indicator-radius=100
+indicator-thickness=25
+
+# colors of inner circle
+	inside-color=111111
+	inside-clear-color=555555
+	inside-caps-lock-color=FF1111
+	# color when verifying
+	inside-ver-color=5555FF
+  # color when wrong
+	inside-wrong-color=FF0000
+
+# colors of wedges on circle when inputting text
+	key-hl-color=666666
+	# deleting text
+	bs-hl-color=FF0000
+caps-lock-bs-hl-color=FF4499
+caps-lock-key-hl-color=44FF44
+
+indicator-idle-visible
