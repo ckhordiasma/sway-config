@@ -25,8 +25,12 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+Return exec firefox
 
+
 bindsym $mod+tab workspace back_and_forth
 # bindsym $mod+tab workspace next
+
+# add night light
+exec gammastep -l 21.30694:157.85833
 
 # set color profile
 exec dispwin /usr/share/color/icc/colord/NE160QDM-NZ6.icm
@@ -297,8 +301,8 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
+bindsym XF86MonBrightnessDown exec brightnessctl -e=4 set 1-
+bindsym XF86MonBrightnessUp exec brightnessctl -e=4 set 1+
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -316,7 +320,8 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    status_command i3status -c ~/.config/sway/i3config
+    #status_command i3status -c ~/.config/sway/i3config
+    status_command i3status-rs  ~/.config/sway/i3status-rs.toml
 
     colors {
         statusline #ffffff
