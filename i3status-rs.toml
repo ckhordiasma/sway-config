@@ -7,8 +7,9 @@ theme = "dracula"
 # idle_fg = "#abcdef"
 
 [icons]
-icons = "awesome5"
-# [icons.overrides]
+icons = "material-nf"
+[icons.overrides]
+backlight = ["󰃚","󰃛","󰃜","󰃝","󰃞","󰃟","󰃠"]
 # bat = ["|E|", "|_|", "|=|", "|F|"]
 # bat_charging = "|^| "
 
@@ -34,7 +35,7 @@ idle_bg = "#523456DD"
 [[block]]
 block = "net"
 device = "wlan0"
-format = " ^icon_net_wireless $ssid $ip $speed_down.eng(width:4,p:K,prefix_space:true) " 
+format = " $icon  $ssid $ip $speed_down.eng(width:4,p:K,prefix_space:true) " 
 interval = 5
 [block.theme_overrides]
 idle_bg = "#123456DD"
@@ -50,10 +51,16 @@ idle_bg = "#128934DD"
 [[block]]
 block = "cpu"
 interval = 5
-info_cpu = 30
-warning_cpu = 60
+info_cpu = 50
+warning_cpu = 75
 critical_cpu = 90
-format = " $icon $utilization $barchart"
+format = " $icon $utilization $barchart "
+
+[[block]]
+block = "memory"
+#format = " $icon $mem_total_used_percents.eng(w:2) $mem_total_used_percents.bar(w:1,v:true) "
+format = " $icon $mem_total_used_percents.eng(w:2) "
+format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
 
 [[block]]
 block = "disk_space"
@@ -66,15 +73,27 @@ alert = 10.0
 format = " $icon $available.eng(w:2) "
 
 [[block]]
-block = "memory"
-format = " $icon $mem_total_used_percents.eng(w:2) $mem_total_used_percents.bar(w:1,v:true) "
-format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
-
-[[block]]
 block = "sound"
+format = " $icon $active_port $volume "
+driver = "pulseaudio"
+show_volume_when_muted = true
+headphones_indicator = true
 [[block.click]]
 button = "left"
-cmd = "pavucontrol"
+cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+[block.theme_overrides]
+warning_bg = "#FF3456DD"
+idle_bg = "#333456"
+
+[[block]]
+block = "backlight"
+format = " $icon  $brightness "
+root_scaling = 3
+[[block.click]]
+button = "left"
+cmd = ""
+[block.theme_overrides]
+idle_bg = "#565656"
 
 [[block]]
 block = "time"
