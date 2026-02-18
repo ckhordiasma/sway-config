@@ -14,7 +14,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+# set $term alacritty
+set $term ~/.config/sway/alacritty-new-window.sh
 
 # exec albert
 # Your preferred application launcher
@@ -23,7 +24,8 @@ set $term alacritty
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 # Start your launcher
 bindsym $mod+d exec $menu
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Shift+Return exec "firefox -P default-release"
+bindsym $mod+Control+Shift+Return exec "firefox -P work"
 
 
 bindsym $mod+tab workspace back_and_forth
@@ -297,7 +299,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # audio keybinds and stuff
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioRaiseVolume exec 'pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%'
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle

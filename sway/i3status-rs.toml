@@ -23,12 +23,28 @@ missing_format = ""
 [block.theme_overrides]
 idle_bg = "#223456DD"
 
+# [[block]]
+# block = "net"
+# if_command = "tailscale status --json | jq -r '.BackendState' | grep -q 'Running'"
+# device = "tailscale0"
+# format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) " 
+# inactive_format = ""
+# missing_format = ""
+
 [[block]]
-block = "net"
-device = "tailscale0"
-format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) " 
-inactive_format = ""
-missing_format = ""
+block = "custom"
+hide_when_empty = true
+command = '''
+if tailscale status --json | jq -r '.BackendState' | grep -q 'Running'; then
+    # Get tailscale interface stats
+    IFACE=$(ip -o link show | grep tailscale | awk -F': ' '{print $2}')
+    if [ -n "$IFACE" ]; then
+        # You can use vnstat, ifstat, or parse /sys/class/net for speed
+        echo " $IFACE: active"
+    fi 
+fi
+'''
+interval = 5
 [block.theme_overrides]
 idle_bg = "#523456DD"
 
