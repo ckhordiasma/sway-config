@@ -1,8 +1,10 @@
 /*
 /*/
-!.gitignore
-!i3bar-river/
-!sway/
-!niri/
-!nvim/
-!xdg-desktop-portal/
+!.config
+.config/*
+!.config/.gitignore
+!.config/i3bar-river/
+!.config/sway/
+!.config/niri/
+!.config/nvim/
+!.config/xdg-desktop-portal/
