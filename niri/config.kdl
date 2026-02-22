@@ -38,9 +38,10 @@ input {
         // drag false
         // drag-lock
         natural-scroll
-        accel-speed 0.1
+        accel-speed 0.2
         accel-profile "adaptive"
-	scroll-factor 0.2
+	      scroll-factor 0.2
+        click-method "clickfinger"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
@@ -264,10 +265,28 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-         left 64
-         right 64
+         left 32 //64
+         right 32 // 64
          // top 16
          // bottom 16
+    }
+
+    tab-indicator {
+        // off
+        on
+        hide-when-single-tab
+        // place-within-column
+        gap 10
+        width 12
+        length total-proportion=0.25
+        position "left"
+        gaps-between-tabs 5
+        corner-radius 4
+        inactive-color "gray"
+        urgent-color "blue"
+        active-gradient from="#80c8ff" to="#000000" angle=45
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        // urgent-gradient from="#800" to="#a33" angle=45
     }
 }
 
@@ -279,8 +298,23 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-sh-at-startup "i3bar-river"
 
+// for file choosers, screenshots, etc
+spawn-sh-at-startup "/usr/lib/xdg-desktop-portal"
+// specifically for screenshots and screen recording
+spawn-sh-at-startup "/lib/xdg-desktop-portal-wlr -r -c ~/.config/sway/xdpw-config"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+
+// add night light
+spawn-sh-at-startup "gammastep -l 21.30694:157.85833"
+
+//set color profile
+spawn-sh-at-startup "dispwin /usr/share/color/icc/colord/NE160QDM-NZ6.icm"
+
+// for priv escalation prompt
+spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -329,7 +363,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"firefox$"#
-    open-maximized true
+    // open-maximized true
 }
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
