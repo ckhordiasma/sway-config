@@ -424,7 +424,7 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "-e=4" "set" "10+"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-e=4" "set" "10-"; }
 
-    Mod+Shift+O { spawn "~/.config/sway/audio_toggle.sh"; } 
+    Mod+Shift+O { spawn "~/.config/scripts/audio_toggle.sh"; } 
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
