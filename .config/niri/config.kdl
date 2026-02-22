@@ -295,7 +295,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-sh-at-startup ".config/scripts/de-startup.sh"
+spawn-sh-at-startup "~/.config/scripts/de-startup.sh"
 
 
 hotkey-overlay {
@@ -406,9 +406,9 @@ binds {
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
     // "-l 1.0" limits the volume to 100%.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ -5%"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "~/.config/scripts/audio.sh up";}
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "~/.config/scripts/audio.sh down"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "~/.config/scripts/audio.sh toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-source-mute @DEFAULT_SOURCE@ toggle"; }
 
     // Example media keys mapping using playerctl.
