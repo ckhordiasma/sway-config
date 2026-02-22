@@ -295,25 +295,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// // This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-sh-at-startup "i3bar-river"
-// 
-// // for file choosers, screenshots, etc
-// spawn-sh-at-startup "/usr/lib/xdg-desktop-portal"
-// // specifically for screenshots and screen recording
-// spawn-sh-at-startup "/lib/xdg-desktop-portal-wlr -r -c ~/.config/sway/xdpw-config"
-// 
-// // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-// 
-// // add night light
-// spawn-sh-at-startup "gammastep -l 21.30694:157.85833"
-// 
-// //set color profile
-// spawn-sh-at-startup "dispwin /usr/share/color/icc/colord/NE160QDM-NZ6.icm"
-// 
-// // for priv escalation prompt
-// spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-sh-at-startup ".config/scripts/de-startup.sh"
 
 
 hotkey-overlay {

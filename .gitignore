@@ -2,6 +2,7 @@
 /*/
 !.config
 .config/*
+!.config/scripts/
 !.config/.gitignore
 !.config/i3bar-river/
 !.config/sway/
