@@ -7,7 +7,7 @@
 !.config/sway/
 !.config/niri/
 !.config/nvim/
-!.config/xdg-desktop-portal/
+!.config/xdg-desktop-portal*/
 !.profile
 !.bashrc
 !.bash_profile
