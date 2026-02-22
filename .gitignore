@@ -8,3 +8,7 @@
 !.config/niri/
 !.config/nvim/
 !.config/xdg-desktop-portal/
+!.profile
+!.bashrc
+!.bash_profile
+!.bash_aliases
