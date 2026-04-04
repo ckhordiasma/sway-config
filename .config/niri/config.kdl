@@ -336,7 +336,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-sh-at-startup "~/.config/scripts/de-startup.sh"
-
+spawn-sh-at-startup "~/.config/scripts/swayidle.sh"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
