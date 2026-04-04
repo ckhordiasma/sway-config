@@ -1,14 +1,5 @@
-/*
-/*/
+*
 !.config
-.config/*
-!.config/scripts/
-!.config/.gitignore
-!.config/i3bar-river/
-!.config/sway/
-!.config/niri/
-!.config/nvim/
-!.config/xdg-desktop-portal*/
 !.profile
 !.bashrc
 !.bash_profile

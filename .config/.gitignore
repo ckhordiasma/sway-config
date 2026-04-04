@@ -1,0 +1,9 @@
+*
+!scripts/
+!.gitignore
+!i3bar-river/
+!sway/
+!swaylock/
+!niri/
+!nvim/
+!xdg-desktop-portal*/
