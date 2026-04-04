@@ -1,6 +1,11 @@
-*
-!scripts/
+# Ignore all top level files/folders by default
+/*
+
+# Track these files
 !.gitignore
+
+# Track these folders
+!scripts/
 !i3bar-river/
 !sway/
 !swaylock/
