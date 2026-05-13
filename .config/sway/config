@@ -87,13 +87,10 @@ output 'Dell Inc. DELL P2419H 30NGR63' \
 	resolution --custom 1920x1080@59.999Hz scale 1 \
 	pos -4213 -270 \
 	
-
-
 # upper left monitor
 output 'Hewlett Packard HP V241 3CQ41708N3' \
 	resolution 1920x1080@60Hz scale 1 \
 	pos -4213 -1350
-
 
 ### Idle configuration
 #
@@ -109,16 +106,8 @@ output 'Hewlett Packard HP V241 3CQ41708N3' \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 # swaylock settings managed separately
-exec swayidle -w \
-          timeout 300 'swaylock -f --config ~/.config/sway/swaylock-config' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-	  timeout 900 'systemctl suspend-then-hibernate' \
-	  idlehint 1500 \
-          before-sleep 'swaylock -f --config ~/.config/sway/swaylock-config' \
+exec "~/.config/scripts/swayidle.sh" 
 
-
-# this conflicts with other stuff
-# bindsym $mod+L 'swaylock -f --config ~/.config/sway/swaylock-config'
 
 ### Input configuration
 #

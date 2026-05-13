@@ -79,7 +79,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+/- output "EXAMPLE" {
     // Uncomment this line to disable this output.
     // off
 
@@ -89,10 +89,11 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    // mode "1920x1080@120.030"
+    mode "2560x1600@60.002"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+    scale 1.5
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -107,7 +108,46 @@ input {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=4213 y=1350
+}
+
+// Laptop Monitor
+output "BOE 0x0BC9 Unknown" {
+    mode "2560x1600@60.002"
+    scale 1.5
+    transform "normal"
+    position x=4213 y=1350
+}
+// Widescreen
+output "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown" {
+    mode "3440x1440@59.999"
+    scale 1.5
+    position x=1920 y=450
+}
+// Lower Left Monitor
+output "Dell Inc. DELL P2419H 30NGR63" {
+    mode custom=true "1920x1080@59.999"
+    scale 1
+    position x=0 y=1080
+}
+// Upper Left Monitor
+output "Hewlett Packard HP V241 3CQ41708N3" {
+    mode "1920x1080@60"
+    scale 1
+    // Everything relative to upper left monitor for xserver/xwayland compat
+    position x=0 y=0
+}
+workspace "one" {
+  open-on-output "Hewlett Packard HP V241 3CQ41708N3"
+}
+workspace "two" {
+  open-on-output "Dell Inc. DELL P2419H 30NGR63"
+}
+workspace "three" {
+  open-on-output "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown"
+}
+workspace "four" {
+  open-on-output "BOE 0x0BC9 Unknown"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -296,7 +336,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-sh-at-startup "~/.config/scripts/de-startup.sh"
-
+spawn-sh-at-startup "~/.config/scripts/swayidle.sh"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -394,8 +434,9 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "dmenu_path | wmenu | sh"; }
     Mod+Shift+Return hotkey-overlay-title="Firefox" { spawn-sh "firefox -P default-release"; }
+    Mod+Control+Shift+Return hotkey-overlay-title="Work Firefox" { spawn-sh "firefox -P work";}
 
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock -f --config ~/.config/sway/swaylock-config"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock -f --config ~/.config/swaylock/config"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -433,14 +474,12 @@ binds {
 
     Mod+Shift+Q repeat=false { close-window; }
 
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    //Mod+J     { focus-window-down; }
-    //Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+Left  { focus-column-or-monitor-left; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+Down  { focus-window-or-monitor-down; }
+    Mod+Up    { focus-window-or-monitor-up; }
+    Mod+Right { focus-column-or-monitor-right; }
+    Mod+L     { focus-column-or-monitor-right; }
 
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Down  { move-window-down; }
@@ -543,24 +582,15 @@ binds {
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+Shift+1 { move-column-to-workspace 1; }
-    Mod+Shift+2 { move-column-to-workspace 2; }
-    Mod+Shift+3 { move-column-to-workspace 3; }
-    Mod+Shift+4 { move-column-to-workspace 4; }
-    Mod+Shift+5 { move-column-to-workspace 5; }
-    Mod+Shift+6 { move-column-to-workspace 6; }
-    Mod+Shift+7 { move-column-to-workspace 7; }
-    Mod+Shift+8 { move-column-to-workspace 8; }
-    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+4 { focus-monitor "BOE 0x0BC9 Unknown"; }
+    Mod+3 { focus-monitor "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown"; }
+    Mod+2 { focus-monitor "Dell Inc. DELL P2419H 30NGR63"; }
+    Mod+1 { focus-monitor "Hewlett Packard HP V241 3CQ41708N3"; }
+
+    Mod+Shift+4 { move-column-to-monitor "BOE 0x0BC9 Unknown"; }
+    Mod+Shift+3 { move-column-to-monitor "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown"; }
+    Mod+Shift+2 { move-column-to-monitor "Dell Inc. DELL P2419H 30NGR63"; }
+    Mod+Shift+1 { move-column-to-monitor "Hewlett Packard HP V241 3CQ41708N3"; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }

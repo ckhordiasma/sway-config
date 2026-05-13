@@ -1,14 +1,11 @@
-/*
-/*/
-!.config
-.config/*
-!.config/scripts/
-!.config/.gitignore
-!.config/i3bar-river/
-!.config/sway/
-!.config/niri/
-!.config/nvim/
-!.config/xdg-desktop-portal*/
+# Ignore all top level files/folders by default 
+# (but not necessarily subfolders)
+/* 
+
+# Track these folders (nested gitignores)
+!.config/
+
+# Track these files
 !.profile
 !.bashrc
 !.bash_profile
