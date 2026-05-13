@@ -19,6 +19,9 @@ If `~` already has the file you're trying to stow, either delete it first or use
 | Package   | Contents |
 |-----------|----------|
 | `bash`    | `.bash_profile`, `.bashrc`, `.profile` |
+| `fish`    | `~/.config/fish/config.fish`, `fish_prompt`, plus a `conf.d` shim that sources `~/.aliases` |
+| `aliases` | `~/.aliases` — shared alias file sourced by both bash and fish |
+| `ghostty` | ghostty terminal config |
 | `niri`    | niri compositor config + xdg-desktop-portal configs |
 | `nvim`    | neovim config |
 | `sway`    | sway, swaylock, i3bar-river configs |

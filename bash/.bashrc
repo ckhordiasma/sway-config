@@ -10,7 +10,7 @@ export EDITOR=vim
 
 export MOZ_USE_XINPUT2=1
 
-source ~/.bash_aliases
+source ~/.aliases
 
 
 # make vs code work better in wayland

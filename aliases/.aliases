@@ -1,0 +1,37 @@
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ssh='TERM=xterm-256color ssh'
+
+alias vi=nvim
+alias vim=nvim
+
+# related to ssh'ing
+# alias cisco-ssh='ssh -o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa -i ~/.ssh/cisco-privkey chkodama@192.168.42.104 -p 6922'
+alias kluks='sudo kluks'
+alias duckssh='ssh-add ~/secret/keys/fw-to-duck'
+alias githubssh='ssh-add ~/secret/keys/github'
+
+# misc
+alias batuptime="python3 -c 'import time,datetime;print(datetime.timedelta(seconds=time.clock_gettime(time.CLOCK_MONOTONIC)))'"
+alias swayconfig='vim ~/.config/sway/config'
+alias niriconfig='vim ~/.config/niri/config.kdl'
+alias startplasma='/usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland'
+
+# need to run this immediately after turning on headset
+alias conn_xbox_headset="bluetoothctl -- connect D8:E2:DF:F7:DB:CF"
+
+# networking
+alias knet='sudo tailscale login --accept-routes --accept-dns --login-server https://connect.kodama.pw'
+alias rh_login='nmcli connection up "Red Hat Global VPN" --ask'
+alias rh_logout='nmcli connection down "Red Hat Global VPN"'
+
+# temporarily suspend idle/sleep/shutdown
+alias keep_awake='sudo systemd-inhibit --what=shutdown:sleep:idle bash -c "echo \"keeping computer awake...\" && sleep infinity"'
+
+alias set_timezone='bash -c "curl https://ipapi.co/timezone | xargs -n 1 timedatectl set-timezone"'
+
+
+# for work
+# $PWD (not ${PWD}) so this works in both bash and fish
+alias rpm_lockfile='podman run --rm -v "$PWD:/work" localhost/rpm-lockfile-prototype:latest --outfile "/work/rpms.lock.yaml" "/work/rpms.in.yaml"'
+alias kinit='kinit ckodama@IPA.REDHAT.COM'
