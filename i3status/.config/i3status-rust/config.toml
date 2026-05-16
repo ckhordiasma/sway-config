@@ -17,17 +17,18 @@ backlight = ["󰃚","󰃛","󰃜","󰃝","󰃞","󰃟","󰃠"]
 [[block]]
 block = "net"
 device = "tun0"
-format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) " 
+format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) "
 inactive_format = ""
 missing_format = ""
 [block.theme_overrides]
-idle_bg = "#223456DD"
+idle_bg = "#81A1C1FF"
+idle_fg = "#2E3440"
 
 # [[block]]
 # block = "net"
 # if_command = "tailscale status --json | jq -r '.BackendState' | grep -q 'Running'"
 # device = "tailscale0"
-# format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) " 
+# format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) "
 # inactive_format = ""
 # missing_format = ""
 
@@ -41,20 +42,22 @@ if tailscale status --json | jq -r '.BackendState' | grep -q 'Running'; then
     if [ -n "$IFACE" ]; then
         # You can use vnstat, ifstat, or parse /sys/class/net for speed
         echo " $IFACE: active"
-    fi 
+    fi
 fi
 '''
 interval = 5
 [block.theme_overrides]
-idle_bg = "#523456DD"
+idle_bg = "#B48EADFF"
+idle_fg = "#2E3440"
 
 [[block]]
 block = "net"
 device = "wlan0"
-format = " $icon  $ssid $ip $speed_down.eng(width:4,p:K,prefix_space:true) " 
+format = " $icon  $ssid $ip $speed_down.eng(width:4,p:K,prefix_space:true) "
 interval = 5
 [block.theme_overrides]
-idle_bg = "#123456DD"
+idle_bg = "#88C0D0FF"
+idle_fg = "#2E3440"
 
 [[block]]
 block = "battery"
@@ -62,15 +65,16 @@ driver = "upower"
 charging_format = " $icon $percentage "
 full_format = " $icon  $percentage "
 [block.theme_overrides]
-idle_bg = "#128934DD"
+idle_bg = "#A3BE8CFF"
+idle_fg = "#2E3440"
 
 [[block]]
 block = "custom"
 command = "cccc"
 interval = 5
 [block.theme_overrides]
-idle_bg = "#FF7700DD"
-idle_fg = "#FFFFFF"
+idle_bg = "#D08770FF"
+idle_fg = "#2E3440"
 
 [[block]]
 block = "cpu"
@@ -79,12 +83,18 @@ info_cpu = 50
 warning_cpu = 75
 critical_cpu = 90
 format = " $icon $utilization $barchart "
+[block.theme_overrides]
+idle_bg = "#BF616AFF"
+idle_fg = "#ECEFF4"
 
 [[block]]
 block = "memory"
 #format = " $icon $mem_total_used_percents.eng(w:2) $mem_total_used_percents.bar(w:1,v:true) "
 format = " $icon $mem_total_used_percents.eng(w:2) "
 format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
+[block.theme_overrides]
+idle_bg = "#EBCB8BFF"
+idle_fg = "#2E3440"
 
 [[block]]
 block = "disk_space"
@@ -95,6 +105,9 @@ interval = 20
 warning = 20.0
 alert = 10.0
 format = " $icon $available.eng(w:2) "
+[block.theme_overrides]
+idle_bg = "#5E81ACFF"
+idle_fg = "#ECEFF4"
 
 [[block]]
 block = "sound"
@@ -106,8 +119,10 @@ headphones_indicator = true
 button = "left"
 cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 [block.theme_overrides]
-warning_bg = "#FF3456DD"
-idle_bg = "#333456"
+idle_bg = "#8FBCBBFF"
+idle_fg = "#2E3440"
+warning_bg = "#BF616AFF"
+warning_fg = "#ECEFF4"
 
 [[block]]
 block = "backlight"
@@ -117,9 +132,13 @@ root_scaling = 3
 button = "left"
 cmd = ""
 [block.theme_overrides]
-idle_bg = "#565656"
+idle_bg = "#EBCB8BFF"
+idle_fg = "#2E3440"
 
 [[block]]
 block = "time"
 interval = 5
 format = " $timestamp.datetime(f:'%a %d/%m %R') "
+[block.theme_overrides]
+idle_bg = "#4C566AFF"
+idle_fg = "#D8DEE9"
