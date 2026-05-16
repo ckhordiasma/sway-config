@@ -137,19 +137,6 @@ output "Hewlett Packard HP V241 3CQ41708N3" {
     // Everything relative to upper left monitor for xserver/xwayland compat
     position x=0 y=0
 }
-workspace "one" {
-  open-on-output "Hewlett Packard HP V241 3CQ41708N3"
-}
-workspace "two" {
-  open-on-output "Dell Inc. DELL P2419H 30NGR63"
-}
-workspace "three" {
-  open-on-output "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown"
-}
-workspace "four" {
-  open-on-output "BOE 0x0BC9 Unknown"
-}
-
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout

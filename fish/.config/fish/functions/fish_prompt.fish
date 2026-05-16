@@ -15,5 +15,5 @@ function fish_prompt
     end
 
     echo -n "[$display$git_part]"
-    echo -n '$ '
+    echo -n ' > '
 end
