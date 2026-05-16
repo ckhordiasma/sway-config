@@ -65,6 +65,14 @@ full_format = " $icon  $percentage "
 idle_bg = "#128934DD"
 
 [[block]]
+block = "custom"
+command = "cccc"
+interval = 5
+[block.theme_overrides]
+idle_bg = "#FF7700DD"
+idle_fg = "#FFFFFF"
+
+[[block]]
 block = "cpu"
 interval = 5
 info_cpu = 50
