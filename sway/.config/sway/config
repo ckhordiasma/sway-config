@@ -312,7 +312,7 @@ bar {
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
     #status_command i3status -c ~/.config/sway/i3config
-    status_command i3status-rs  ~/.config/sway/i3status-rs.toml
+    status_command i3status-rs
 
     colors {
         statusline #ffffff

@@ -22,9 +22,10 @@ If `~` already has the file you're trying to stow, either delete it first or use
 | `fish`    | `~/.config/fish/config.fish`, `fish_prompt`, plus a `conf.d` shim that sources `~/.aliases` |
 | `aliases` | `~/.aliases` — shared alias file sourced by both bash and fish |
 | `ghostty` | ghostty terminal config |
+| `i3status` | i3status-rust config |
 | `niri`    | niri compositor config + xdg-desktop-portal configs |
 | `nvim`    | neovim config |
-| `sway`    | sway, swaylock, i3bar-river configs |
+| `sway`    | sway and swaylock configs |
 | `scripts` | helper shell scripts under `~/.config/scripts/` |
 
 ## uninstall

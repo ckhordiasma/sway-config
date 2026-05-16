@@ -1,7 +1,6 @@
 # The status generator command.
 # Optional: with no status generator the bar will display only tags and layout name.
-command = "i3status-rs ~/.config/sway/i3status-rs.toml"
-# command = "i3status-rs"
+command = "i3status-rs"
 
 
 # Colors
