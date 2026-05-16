@@ -17,35 +17,21 @@ backlight = ["󰃚","󰃛","󰃜","󰃝","󰃞","󰃟","󰃠"]
 [[block]]
 block = "net"
 device = "tun0"
-format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) "
+format = " $icon tun0 $speed_down.eng(width:4,p:K,prefix_space:true) "
+format_alt = " $icon tun0 $ip $speed_down.eng(width:4,p:K,prefix_space:true) "
 inactive_format = ""
 missing_format = ""
 [block.theme_overrides]
 idle_bg = "#81A1C1FF"
 idle_fg = "#2E3440"
 
-# [[block]]
-# block = "net"
-# if_command = "tailscale status --json | jq -r '.BackendState' | grep -q 'Running'"
-# device = "tailscale0"
-# format = " $device: $speed_down.eng(width:4,p:K,prefix_space:true) "
-# inactive_format = ""
-# missing_format = ""
-
 [[block]]
-block = "custom"
-hide_when_empty = true
-command = '''
-if tailscale status --json | jq -r '.BackendState' | grep -q 'Running'; then
-    # Get tailscale interface stats
-    IFACE=$(ip -o link show | grep tailscale | awk -F': ' '{print $2}')
-    if [ -n "$IFACE" ]; then
-        # You can use vnstat, ifstat, or parse /sys/class/net for speed
-        echo " $IFACE: active"
-    fi
-fi
-'''
-interval = 5
+block = "net"
+device = "tailscale0"
+format = " $icon tailscale $speed_down.eng(width:4,p:K,prefix_space:true) "
+format_alt = " $icon tailscale $ip $speed_down.eng(width:4,p:K,prefix_space:true) "
+inactive_format = ""
+missing_format = ""
 [block.theme_overrides]
 idle_bg = "#B48EADFF"
 idle_fg = "#2E3440"
