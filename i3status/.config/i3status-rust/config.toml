@@ -67,6 +67,12 @@ full_format = " $icon  $percentage "
 [block.theme_overrides]
 idle_bg = "#A3BE8CFF"
 idle_fg = "#2E3440"
+good_bg = "#A3BE8CFF"
+good_fg = "#2E3440"
+warning_bg = "#D08770FF"
+warning_fg = "#2E3440"
+critical_bg = "#BF616AFF"
+critical_fg = "#ECEFF4"
 
 [[block]]
 block = "custom"
