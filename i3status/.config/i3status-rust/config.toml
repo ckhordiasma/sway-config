@@ -116,6 +116,8 @@ format = " $icon $active_port $volume "
 driver = "pulseaudio"
 show_volume_when_muted = true
 headphones_indicator = true
+[block.active_port_mappings]
+"analog-output-speaker" = "laptop-speakers"
 [[block.click]]
 button = "left"
 cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
