@@ -130,7 +130,7 @@ warning_fg = "#ECEFF4"
 [[block]]
 block = "backlight"
 format = " $icon  $brightness "
-root_scaling = 3
+root_scaling = 1
 [[block.click]]
 button = "left"
 cmd = ""

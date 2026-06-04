@@ -449,8 +449,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "-e=4" "set" "10+"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-e=4" "set" "10-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "~/.config/scripts/brightness.sh up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "~/.config/scripts/brightness.sh down"; }
 
     Mod+Shift+O { spawn "~/.config/scripts/audio_toggle.sh"; } 
 
