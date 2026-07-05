@@ -25,7 +25,8 @@ If `~` already has the file you're trying to stow, either delete it first or use
 | `i3status` | i3status-rust config |
 | `niri`    | niri compositor config + xdg-desktop-portal configs |
 | `nvim`    | neovim config |
-| `sway`    | sway and swaylock configs |
+| `sway`    | sway compositor config |
+| `swaylock` | swaylock screen locker config |
 | `scripts` | helper shell scripts under `~/.config/scripts/` |
 
 ## uninstall
